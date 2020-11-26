@@ -17,6 +17,7 @@ namespace mathematical_morphology
             InitializeComponent();
         }
 
+        
         private void limpar_Tela()
         {
             pictureBox_sem_filtros.Image = null;

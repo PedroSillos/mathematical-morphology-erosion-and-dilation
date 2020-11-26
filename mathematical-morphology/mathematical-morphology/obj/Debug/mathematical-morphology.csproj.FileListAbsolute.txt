@@ -1,0 +1,10 @@
+C:\mathematical-morphology-erosion-and-dilation\mathematical-morphology\mathematical-morphology\bin\Debug\mathematical-morphology.exe.config
+C:\mathematical-morphology-erosion-and-dilation\mathematical-morphology\mathematical-morphology\bin\Debug\mathematical-morphology.exe
+C:\mathematical-morphology-erosion-and-dilation\mathematical-morphology\mathematical-morphology\bin\Debug\mathematical-morphology.pdb
+C:\mathematical-morphology-erosion-and-dilation\mathematical-morphology\mathematical-morphology\obj\Debug\mathematical-morphology.csprojAssemblyReference.cache
+C:\mathematical-morphology-erosion-and-dilation\mathematical-morphology\mathematical-morphology\obj\Debug\mathematical_morphology.Form1.resources
+C:\mathematical-morphology-erosion-and-dilation\mathematical-morphology\mathematical-morphology\obj\Debug\mathematical_morphology.Properties.Resources.resources
+C:\mathematical-morphology-erosion-and-dilation\mathematical-morphology\mathematical-morphology\obj\Debug\mathematical-morphology.csproj.GenerateResource.cache
+C:\mathematical-morphology-erosion-and-dilation\mathematical-morphology\mathematical-morphology\obj\Debug\mathematical-morphology.csproj.CoreCompileInputs.cache
+C:\mathematical-morphology-erosion-and-dilation\mathematical-morphology\mathematical-morphology\obj\Debug\mathematical-morphology.exe
+C:\mathematical-morphology-erosion-and-dilation\mathematical-morphology\mathematical-morphology\obj\Debug\mathematical-morphology.pdb
