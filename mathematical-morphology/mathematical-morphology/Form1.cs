@@ -87,7 +87,7 @@ namespace mathematical_morphology
                 {
                     Color pixel_antigo = imagem_antiga.GetPixel(coluna_antiga, linha_antiga);
                     int cinza = Convert.ToInt32(pixel_antigo.R.ToString());
-                    if(cinza > 70)
+                    if(cinza > 60)
                     {
                         cinza = 255;
                     }
@@ -172,18 +172,82 @@ namespace mathematical_morphology
 
         private void button_erosao_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i< 2; i++)
+            if (pictureBox_com_filtros.Image != null)
             {
-                if (pictureBox_com_filtros.Image != null)
-                {
-                    pictureBox_com_filtros.Image = template_erosao((Bitmap)pictureBox_com_filtros.Image);
-                }
-                else
-                {
-                    pictureBox_com_filtros.Image = template_erosao((Bitmap)pictureBox_sem_filtros.Image);
-                }
+                pictureBox_com_filtros.Image = template_erosao((Bitmap)pictureBox_com_filtros.Image);
+            }
+            else
+            {
+                pictureBox_com_filtros.Image = template_erosao((Bitmap)pictureBox_sem_filtros.Image);
             }
         }
 
+        private Bitmap template_dilatacao(Bitmap imagem_antiga)
+        {
+            int largura = imagem_antiga.Width;
+            int altura = imagem_antiga.Height;
+
+            Bitmap imagem_nova = new Bitmap(largura, altura);
+
+            for (int coluna_antiga = 0; coluna_antiga < largura; coluna_antiga++)
+            {
+                for (int linha_antiga = 0; linha_antiga < altura; linha_antiga++)
+                {
+                    Color pixel_antigo = imagem_antiga.GetPixel(coluna_antiga, linha_antiga);
+                    int cor_antiga = Convert.ToInt32(pixel_antigo.R.ToString());
+
+                    if (cor_antiga == 0)
+                    {
+                        for (int coluna_template = coluna_antiga - 1; coluna_template <= coluna_antiga + 1; coluna_template++)
+                        {
+                            for (int linha_template = linha_antiga - 1; linha_template <= linha_antiga + 1; linha_template++)
+                            {
+
+                                if (coluna_template >= 0 && linha_template >= 0)
+                                {
+                                    if (coluna_template < largura && linha_template < altura)
+                                    {
+
+                                        Color pixel_template = imagem_antiga.GetPixel(coluna_template, linha_template);
+                                        int cor_template = Convert.ToInt32(pixel_template.R.ToString());
+
+                                        if (cor_template == 255)
+                                        {
+                                            //cima
+                                            if (coluna_template == coluna_antiga && linha_template == linha_antiga - 1) cor_antiga = 255;
+                                            //esquerda
+                                            if (coluna_template == coluna_antiga - 1 && linha_template == linha_antiga) cor_antiga = 255;
+                                            //baixo
+                                            if (coluna_template == coluna_antiga && linha_template == linha_antiga + 1) cor_antiga = 255;
+                                            //direita
+                                            if (coluna_template == coluna_antiga + 1 && linha_template == linha_antiga) cor_antiga = 255;
+                                        }
+
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+
+                    Color pixel_novo = Color.FromArgb(255, cor_antiga, cor_antiga, cor_antiga);
+                    imagem_nova.SetPixel(coluna_antiga, linha_antiga, pixel_novo);
+                }
+            }
+
+            return imagem_nova;
+        }
+
+        private void button_Dilatacao_Click(object sender, EventArgs e)
+        {
+            if (pictureBox_com_filtros.Image != null)
+            {
+                pictureBox_com_filtros.Image = template_dilatacao((Bitmap)pictureBox_com_filtros.Image);
+            }
+            else
+            {
+                pictureBox_com_filtros.Image = template_dilatacao((Bitmap)pictureBox_sem_filtros.Image);
+            }
+        }
     }
 }

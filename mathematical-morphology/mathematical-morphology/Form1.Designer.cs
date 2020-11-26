@@ -99,6 +99,7 @@ namespace mathematical_morphology
             this.button_Dilatacao.TabIndex = 4;
             this.button_Dilatacao.Text = "Dilatação";
             this.button_Dilatacao.UseVisualStyleBackColor = true;
+            this.button_Dilatacao.Click += new System.EventHandler(this.button_Dilatacao_Click);
             // 
             // button_achar_bordas
             // 
