@@ -249,5 +249,78 @@ namespace mathematical_morphology
                 pictureBox_com_filtros.Image = template_dilatacao((Bitmap)pictureBox_sem_filtros.Image);
             }
         }
+
+        private Bitmap passa_alta(Bitmap imagem_antiga)
+        {
+            int largura = imagem_antiga.Width;
+            int altura = imagem_antiga.Height;
+
+            Bitmap imagem_nova = new Bitmap(largura, altura);
+
+            //esses 2 fors andam na imagem pixel por pixel
+            for (int coluna_antiga = 0; coluna_antiga < largura; coluna_antiga++)
+            {
+                for (int linha_antiga = 0; linha_antiga < altura; linha_antiga++)
+                {
+                    int cor_passa_alta = 0;
+                    int variancia = 1;
+
+                    if (coluna_antiga > 0 + variancia && coluna_antiga < largura - variancia)
+                    {
+                        if (linha_antiga > 0 + variancia && linha_antiga < altura - variancia)
+                        {
+                            for (int coluna_template = coluna_antiga - variancia; coluna_template <= coluna_antiga + variancia; coluna_template++)
+                            {
+                                for (int linha_template = linha_antiga - variancia; linha_template <= linha_antiga + variancia; linha_template++)
+                                {
+                                    Color pixel_rgb_vizinho = imagem_antiga.GetPixel(coluna_template, linha_template);
+                                    int cor_equalizada = Convert.ToInt32(pixel_rgb_vizinho.R.ToString());
+
+                                    if (coluna_template == coluna_antiga && linha_template == linha_antiga)
+                                    {
+                                        cor_passa_alta += (cor_equalizada * 8);
+                                    }
+                                    else
+                                    {
+                                        cor_passa_alta += (cor_equalizada * (-1));
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (cor_passa_alta < 0)
+                    { cor_passa_alta = 0; }
+                    if (cor_passa_alta > 255)
+                    { cor_passa_alta = 255; }
+
+                    Color pixel_passa_alta = Color.FromArgb(255, cor_passa_alta, cor_passa_alta, cor_passa_alta);
+
+                    imagem_nova.SetPixel(coluna_antiga, linha_antiga, pixel_passa_alta);
+                }
+            }
+
+            return imagem_nova;
+        }
+
+        private void button_achar_bordas_Click(object sender, EventArgs e)
+        {
+            if (pictureBox_com_filtros.Image != null)
+            {
+                pictureBox_com_filtros.Image = passa_alta((Bitmap)pictureBox_com_filtros.Image);
+            }
+            else
+            {
+                pictureBox_com_filtros.Image = passa_alta((Bitmap)pictureBox_sem_filtros.Image);
+            }
+        }
+
+        private void button_Recarregar_Click(object sender, EventArgs e)
+        {
+            if(pictureBox_com_filtros.Image!=null)
+            {
+                pictureBox_com_filtros.Image = pictureBox_sem_filtros.Image;
+            }
+        }
     }
 }

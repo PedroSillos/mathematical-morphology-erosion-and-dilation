@@ -37,6 +37,7 @@ namespace mathematical_morphology
             this.button_achar_bordas = new System.Windows.Forms.Button();
             this.button_escala_cinza = new System.Windows.Forms.Button();
             this.button_limiar = new System.Windows.Forms.Button();
+            this.button_Recarregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sem_filtros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_com_filtros)).BeginInit();
             this.SuspendLayout();
@@ -113,6 +114,7 @@ namespace mathematical_morphology
             this.button_achar_bordas.TabIndex = 5;
             this.button_achar_bordas.Text = "Achar bordas";
             this.button_achar_bordas.UseVisualStyleBackColor = true;
+            this.button_achar_bordas.Click += new System.EventHandler(this.button_achar_bordas_Click);
             // 
             // button_escala_cinza
             // 
@@ -142,11 +144,26 @@ namespace mathematical_morphology
             this.button_limiar.UseVisualStyleBackColor = true;
             this.button_limiar.Click += new System.EventHandler(this.button_limiar_Click);
             // 
+            // button_Recarregar
+            // 
+            this.button_Recarregar.AccessibleDescription = "Recarregar";
+            this.button_Recarregar.AccessibleName = "botão recarregar";
+            this.button_Recarregar.AutoSize = true;
+            this.button_Recarregar.Location = new System.Drawing.Point(565, 327);
+            this.button_Recarregar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button_Recarregar.Name = "button_Recarregar";
+            this.button_Recarregar.Size = new System.Drawing.Size(173, 36);
+            this.button_Recarregar.TabIndex = 8;
+            this.button_Recarregar.Text = "Recarregar";
+            this.button_Recarregar.UseVisualStyleBackColor = true;
+            this.button_Recarregar.Click += new System.EventHandler(this.button_Recarregar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1128, 419);
+            this.Controls.Add(this.button_Recarregar);
             this.Controls.Add(this.button_limiar);
             this.Controls.Add(this.button_escala_cinza);
             this.Controls.Add(this.button_achar_bordas);
@@ -158,8 +175,8 @@ namespace mathematical_morphology
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sem_filtros)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_com_filtros)).EndInit();
             this.ResumeLayout(false);
@@ -177,6 +194,7 @@ namespace mathematical_morphology
         private System.Windows.Forms.Button button_achar_bordas;
         private System.Windows.Forms.Button button_escala_cinza;
         private System.Windows.Forms.Button button_limiar;
+        private System.Windows.Forms.Button button_Recarregar;
     }
 }
 
